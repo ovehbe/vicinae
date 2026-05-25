@@ -129,6 +129,9 @@
 			"height": 480
 		},
 
+		// Pixels added to the default vertical position. Positive values move the launcher down.
+		"offset_y": 0,
+
 		// EXPERIMENTAL - X11 ONLY!
 		// The name of the screen (as provided by a tool like xrandr) on which the vicinae window
 		// needs to be shown.

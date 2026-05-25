@@ -46,6 +46,21 @@ Flickable {
         }
 
         SettingsRow {
+            label: "Vertical offset"
+            description: "Pixels added to the default launcher position. Positive values move the window down."
+            FormTextInput {
+                width: parent.width
+                text: root.model.windowOffsetY
+                placeholder: "e.g. 0"
+                onAccepted: root.model.windowOffsetY = text
+                onEditingChanged: {
+                    if (!editing)
+                        root.model.windowOffsetY = text;
+                }
+            }
+        }
+
+        SettingsRow {
             label: "Client-side decorations"
             description: "Let Vicinae draw its own rounded borders instead of relying on the windowing system."
             SettingsToggle {

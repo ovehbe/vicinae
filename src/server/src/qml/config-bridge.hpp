@@ -12,6 +12,7 @@ class ConfigBridge : public QObject {
   Q_PROPERTY(int shadowSize READ shadowSize NOTIFY changed)
   Q_PROPERTY(int windowWidth READ windowWidth NOTIFY changed)
   Q_PROPERTY(int windowHeight READ windowHeight NOTIFY changed)
+  Q_PROPERTY(int windowOffsetY READ windowOffsetY NOTIFY changed)
   Q_PROPERTY(bool emacsMode READ emacsMode NOTIFY changed)
   Q_PROPERTY(bool considerPreedit READ considerPreedit NOTIFY changed)
   Q_PROPERTY(bool activateOnSingleClick READ activateOnSingleClick NOTIFY changed)
@@ -45,6 +46,7 @@ public:
 
   int windowWidth() const { return cfg().launcherWindow.size.width; }
   int windowHeight() const { return cfg().launcherWindow.size.height; }
+  int windowOffsetY() const { return cfg().launcherWindow.offsetY; }
   bool emacsMode() const { return cfg().keybinding == "emacs"; }
   bool considerPreedit() const { return cfg().considerPreedit; }
   bool activateOnSingleClick() const { return cfg().activateOnSingleClick; }

@@ -113,6 +113,7 @@ struct WindowConfig {
   WindowCSD clientSideDecorations;
   Size size;
   std::string screen;
+  int offsetY = 0;
   BlurConfig blur;
   WindowCompactMode compactMode;
   LayerShellConfig layerShell;
@@ -123,6 +124,7 @@ template <> struct Partial<WindowConfig> {
   std::optional<float> opacity;
   std::optional<Partial<WindowCSD>> clientSideDecorations;
   std::optional<Partial<Size>> size;
+  std::optional<int> offsetY;
   std::optional<Partial<BlurConfig>> blur;
   std::optional<Partial<WindowCompactMode>> compactMode;
   std::optional<Partial<LayerShellConfig>> layerShell;

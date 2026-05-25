@@ -72,6 +72,14 @@ void GeneralSettingsModel::setWindowOpacity(const QString &v) {
     cfgManager().mergeWithUser({.launcherWindow = config::Partial<config::WindowConfig>{.opacity = val}});
 }
 
+QString GeneralSettingsModel::windowOffsetY() const { return QString::number(cfg().launcherWindow.offsetY); }
+void GeneralSettingsModel::setWindowOffsetY(const QString &v) {
+  bool ok = false;
+  int val = v.toInt(&ok);
+  if (ok)
+    cfgManager().mergeWithUser({.launcherWindow = config::Partial<config::WindowConfig>{.offsetY = val}});
+}
+
 bool GeneralSettingsModel::nativeTextRendering() const { return cfg().font.rendering != "qt"; }
 void GeneralSettingsModel::setNativeTextRendering(bool v) {
   cfgManager().mergeWithUser({.font = config::Partial<config::FontConfig>{.rendering = v ? "native" : "qt"}});

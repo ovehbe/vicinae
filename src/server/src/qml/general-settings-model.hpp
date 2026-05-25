@@ -19,6 +19,7 @@ class GeneralSettingsModel : public QObject {
   Q_PROPERTY(bool clientSideDecorations READ clientSideDecorations WRITE setClientSideDecorations NOTIFY
                  configChanged)
   Q_PROPERTY(QString windowOpacity READ windowOpacity WRITE setWindowOpacity NOTIFY configChanged)
+  Q_PROPERTY(QString windowOffsetY READ windowOffsetY WRITE setWindowOffsetY NOTIFY configChanged)
   Q_PROPERTY(
       bool nativeTextRendering READ nativeTextRendering WRITE setNativeTextRendering NOTIFY configChanged)
   Q_PROPERTY(QString fontSize READ fontSize WRITE setFontSize NOTIFY configChanged)
@@ -57,6 +58,8 @@ public:
   void setClientSideDecorations(bool v);
   QString windowOpacity() const;
   void setWindowOpacity(const QString &v);
+  QString windowOffsetY() const;
+  void setWindowOffsetY(const QString &v);
   bool nativeTextRendering() const;
   void setNativeTextRendering(bool v);
   QString fontSize() const;

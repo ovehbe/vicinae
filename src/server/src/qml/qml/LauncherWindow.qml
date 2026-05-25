@@ -266,10 +266,23 @@ Window {
         }
     }
 
-    function _centerOnCursorScreen() {
-        const g = launcher.cursorScreenGeometry();
+    function _positionOnGeometry(g) {
+        if (!g || g.width <= 0 || g.height <= 0)
+            return;
         root.x = g.x + (g.width - root.width) / 2;
-        root.y = g.y + (g.height - root.height) / 3;
+        root.y = g.y + (g.height - root.height) / 3 + Config.windowOffsetY;
+    }
+
+    function _centerOnCursorScreen() {
+        root._positionOnGeometry(launcher.cursorScreenGeometry());
+    }
+
+    Connections {
+        target: Config
+        function onChanged() {
+            if (root.visible)
+                root._centerOnCursorScreen();
+        }
     }
 
     Connections {
@@ -309,12 +322,8 @@ Window {
         }
     }
 
-    onWidthChanged: root.x = Screen.virtualX + (Screen.width - root.width) / 2
-    onHeightChanged: root.y = Screen.virtualY + (Screen.height - root.height) / 3
+    onWidthChanged: root._centerOnCursorScreen()
+    onHeightChanged: root._centerOnCursorScreen()
 
-    Component.onCompleted: {
-        root.x = Screen.virtualX + (Screen.width - root.width) / 2;
-        root.y = Screen.virtualY + (Screen.height - root.height) / 3;
-        _centerOnCursorScreen();
-    }
+    Component.onCompleted: root._centerOnCursorScreen()
 }
